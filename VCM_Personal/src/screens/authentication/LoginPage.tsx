@@ -14,6 +14,10 @@ const LoginPage = () => {
     navigation.navigate('SendOtpPage' as never);
   };
 
+  const onPress1 = () => {
+    navigation.navigate('SignUpPage' as never);
+  }
+
   return (
     <View style={styles.commonFeature}>
       <Image
@@ -40,7 +44,11 @@ const LoginPage = () => {
      
       <Text style={styles.bottomText}>
         Don't have an account?
+        
+        <TouchableOpacity onPress={onPress1}>
         <Text style={styles.signUpText}> Sign Up!</Text>
+        </TouchableOpacity>
+       
       </Text>
     </View>
   );

@@ -1,14 +1,17 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
 
 const VerifyOtpButton = () => {
 
   const [count, setCount] = useState<number>(0) ;
+  const navigation = useNavigation();
 
-  const onPress = ()=> {
-    setCount(prevCount => prevCount+1);
-    console.log('The result:',count);
-  }
+  const onPress = () => {
+    setCount(prevCount => prevCount + 1);
+    console.log('The result:', count);
+    navigation.navigate('LoginPage' as never);
+  };
   
   return (
     <View style={styles.button}>

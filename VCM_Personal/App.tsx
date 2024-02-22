@@ -8,6 +8,7 @@ import VerifyOtpPage from './src/screens/authentication/VerifyOtpPage';
 import {NavigationContainer} from '@react-navigation/native';
 import { HomestackNavigation } from './src/navigation/StackNav';
 import SplashScreen from './src/screens/SplashScreen';
+import HomePage from './src/screens/HomePage';
 
 const App = () => {
   // return <SendOtpPage />;
@@ -16,6 +17,7 @@ const App = () => {
   // return <ChangePswdPage/>
   // return < VerifyOtpPage/>
   //return <SplashScreen />
+  //return <HomePage />
 
   const [showSplash, setShowSplash] = React.useState(true);
 
@@ -26,21 +28,16 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Render the splash screen conditionally
-  if (showSplash) {
-    return (
-     <SplashScreen />
-    );
-  }
-  else{
-    return (
-      <NavigationContainer>
+  return (
+    <NavigationContainer>
+      {showSplash ? (
+        <SplashScreen />
+      ) : (
         <HomestackNavigation />
-      </NavigationContainer>
-    );
-  }
+      )}
+    </NavigationContainer>
+  );
 
- 
 };
 
 export default App;

@@ -1,9 +1,17 @@
 import React from 'react';
-import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Image, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import SignUpButton from '../../components/SignUpButton';
+import { useNavigation } from '@react-navigation/native';
 
 
 const SignUpPage = () => {
+
+  const navigation = useNavigation();
+
+  const onPress = () => {
+    navigation.navigate('LoginPage' as never);
+  }
+
   return (
     <View style={styles.commonFeature}>
       <Image style={styles.expLogo} source={require('../../assets/experion.png')}/>
@@ -18,7 +26,9 @@ const SignUpPage = () => {
 
       <Text style={styles.bottomText}>
         Already have an account?  
+        <TouchableOpacity onPress={onPress}>
         <Text style={styles.signUpText}> Log in!</Text>
+        </TouchableOpacity>     
       </Text>
     </View>
   );

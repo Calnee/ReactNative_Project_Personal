@@ -11,7 +11,6 @@ const SplashScreen = () => {
             <Image style={styles.splashImg} source={require('../assets/experion.png')} />
         </View>     
     );
-
 }
 
 const styles = StyleSheet.create({

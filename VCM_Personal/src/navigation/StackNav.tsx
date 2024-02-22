@@ -5,13 +5,16 @@ import SignUpPage from '../screens/authentication/SignUpPage';
 import ChangePswdPage from '../screens/authentication/ChangePswdPage';
 import SendOtpPage from '../screens/authentication/SendOtpPage';
 import VerifyOtpPage from '../screens/authentication/VerifyOtpPage';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import HomePage from '../screens/HomePage';
+import ProfilePage from '../screens/ProfilePage';
+import GroupPage from '../screens/GroupPage';
 
 const StackNav = createNativeStackNavigator();
 
 export function HomestackNavigation() {
   return (
     <StackNav.Navigator>
-
       <StackNav.Screen
         name="SignUpPage"
         component={SignUpPage}
@@ -23,6 +26,14 @@ export function HomestackNavigation() {
       <StackNav.Screen
         name="LoginPage"
         component={LoginPage}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <StackNav.Screen
+        name="HomePage"
+        component={BottomTabNavigator}
         options={{
           headerShown: false,
         }}
@@ -45,4 +56,58 @@ export function HomestackNavigation() {
       />
     </StackNav.Navigator>
   );
+}
+
+const BottomNav = createBottomTabNavigator();
+export function BottomTabNavigator() {
+  return(
+    <BottomNav.Navigator>
+        <BottomNav.Screen 
+    name="HomePage" 
+    component={HomePage}
+    options={{
+      headerShown: false,
+      tabBarLabel: 'Home',
+      // tabBarIcon: ({color, size}) => (
+      //   <MaterialCommunityIcons name="search1" color={color} size={size} />
+      // ),
+      tabBarActiveTintColor: 'red',
+      tabBarInactiveTintColor: 'gray',
+    }}>
+    </BottomNav.Screen>
+
+    <BottomNav.Screen 
+    name="Groups" 
+    component={GroupPage}
+    options={{
+      headerShown: false,
+      tabBarLabel: 'Groups',
+      // tabBarIcon: ({color, size}) => (
+      //   <MaterialCommunityIcons name="search1" color={color} size={size} />
+      // ),
+      tabBarActiveTintColor: 'red',
+      tabBarInactiveTintColor: 'gray',
+    }}>
+    </BottomNav.Screen>
+
+    <BottomNav.Screen 
+    name="ProfilePage" 
+    component={ProfilePage}
+    options={{
+      headerShown: false,
+      tabBarLabel: 'Profile',
+      // tabBarIcon: ({color, size}) => (
+      //   <MaterialCommunityIcons name="search1" color={color} size={size} />
+      // ),
+      tabBarActiveTintColor: 'red',
+      tabBarInactiveTintColor: 'gray',
+    }}>
+    </BottomNav.Screen>
+    </BottomNav.Navigator>
+  
+
+
+
+  );
+  
 }
