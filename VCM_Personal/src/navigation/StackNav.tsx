@@ -6,9 +6,11 @@ import ChangePswdPage from '../screens/authentication/ChangePswdPage';
 import SendOtpPage from '../screens/authentication/SendOtpPage';
 import VerifyOtpPage from '../screens/authentication/VerifyOtpPage';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
 import HomePage from '../screens/HomePage';
 import ProfilePage from '../screens/ProfilePage';
 import GroupPage from '../screens/GroupPage';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const StackNav = createNativeStackNavigator();
 
@@ -67,10 +69,10 @@ export function BottomTabNavigator() {
     component={HomePage}
     options={{
       headerShown: false,
-      tabBarLabel: 'Home',
-      // tabBarIcon: ({color, size}) => (
-      //   <MaterialCommunityIcons name="search1" color={color} size={size} />
-      // ),
+      tabBarLabel: 'Contacts',
+      tabBarIcon: ({color, size}) => (
+        <MaterialCommunityIcons name="badge-account-horizontal-outline" color={color} size={size} />
+      ),
       tabBarActiveTintColor: 'red',
       tabBarInactiveTintColor: 'gray',
     }}>
@@ -82,9 +84,9 @@ export function BottomTabNavigator() {
     options={{
       headerShown: false,
       tabBarLabel: 'Groups',
-      // tabBarIcon: ({color, size}) => (
-      //   <MaterialCommunityIcons name="search1" color={color} size={size} />
-      // ),
+      tabBarIcon: ({color, size}) => (
+        <MaterialCommunityIcons name="account-group" color={color} size={size} />
+      ),
       tabBarActiveTintColor: 'red',
       tabBarInactiveTintColor: 'gray',
     }}>
@@ -96,9 +98,9 @@ export function BottomTabNavigator() {
     options={{
       headerShown: false,
       tabBarLabel: 'Profile',
-      // tabBarIcon: ({color, size}) => (
-      //   <MaterialCommunityIcons name="search1" color={color} size={size} />
-      // ),
+      tabBarIcon: ({color, size}) => (
+        <MaterialCommunityIcons name="account" color={color} size={size} />
+      ),
       tabBarActiveTintColor: 'red',
       tabBarInactiveTintColor: 'gray',
     }}>
