@@ -1,22 +1,47 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
+import {Text, View, TouchableOpacity, StyleSheet, ActivityIndicator, SectionListRenderItemInfo} from 'react-native';
+import api from '../network/api';
+import { loginUser } from '../network/LoginHook';
 
-const ButtonComponent = () => {
+type ButtonTypes = {
+  title: string,
+  passedFunction: string,
+  values: {emailValue:string, pswdValue:string},
+  functionality: string,
+  statusCode: string
+}
 
-  const [count, setCount] = useState<number>(0) ;
+const ButtonComponent = (props: ButtonTypes) => {
+
   const navigation = useNavigation();
 
-  const onPress = () => {
-    setCount(prevCount => prevCount + 1);
-    console.log('The result:', count);
-    navigation.navigate('HomePage' as never);
+  const ButtonAction = async () => {
+    if(props.functionality === "login") {
+      let {statusCode} = await loginUser({
+        loginUserEmail: props.values.emailValue,
+        loginPassword: props.values.pswdValue,
+      })
+
+      if(statusCode ==='200'){
+        onPressLogin();
+      }
+    }
+  }
+
+  const onPressLogin = async () => {
+    try {
+      navigation.navigate('HomePage' as never);
+    } catch (error) {
+      console.error('Error:', error);
+    } 
   };
   
   return (
     <View style={styles.button}>
-      <TouchableOpacity onPress={(onPress)}>
+      <TouchableOpacity onPress={() => { ButtonAction(); onPressLogin(); }}>   
         <Text style={styles.textColor}>Login</Text>
+        {/* <ActivityIndicator size="small" color="white" /> */}
       </TouchableOpacity>
     </View>
   );

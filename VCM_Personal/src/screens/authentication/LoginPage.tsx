@@ -18,6 +18,9 @@ const LoginPage = () => {
     navigation.navigate('SignUpPage' as never);
   }
 
+  const [emailValue, setUserEmail] = useState("");
+  const [pswdValue, setUserPassword] = useState("");
+
   return (
     <View style={styles.commonFeature}>
       <Image
@@ -29,14 +32,25 @@ const LoginPage = () => {
         <TextInput
           style={[styles.formField, styles.formGap1]}
           placeholder="email"
+          value={emailValue}
+          onChangeText={emailValue => setUserEmail(emailValue)}
         />
         <TextInput
           style={[styles.formField, styles.formGap2]}
+          secureTextEntry={true}
           placeholder="password"
+          value={pswdValue}
+          onChangeText={pswdValue => setUserPassword(pswdValue)}
         />
       </View>
 
-      <ButtonComponent />
+      <ButtonComponent 
+      title="Login"
+      passedFunction='HomePage'
+      values={{emailValue,pswdValue}}
+      functionality="login"
+      statusCode='200'
+      />
 
       <TouchableOpacity onPress={onPress}>
       <Text style={styles.text}>Forgot Password?</Text>
