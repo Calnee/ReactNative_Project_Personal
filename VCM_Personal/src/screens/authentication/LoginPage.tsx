@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
-import {Image, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import ButtonComponent from '../../components/Button';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const LoginPage = () => {
-
-  const [count, setCount] = useState<number>(0) ;
+  const [count, setCount] = useState<number>(0);
   const navigation = useNavigation();
 
   const onPress = () => {
@@ -16,10 +22,10 @@ const LoginPage = () => {
 
   const onPress1 = () => {
     navigation.navigate('SignUpPage' as never);
-  }
+  };
 
-  const [emailValue, setUserEmail] = useState("");
-  const [pswdValue, setUserPassword] = useState("");
+  const [emailValue, setUserEmail] = useState('');
+  const [pswdValue, setUserPassword] = useState('');
 
   return (
     <View style={styles.commonFeature}>
@@ -44,25 +50,23 @@ const LoginPage = () => {
         />
       </View>
 
-      <ButtonComponent 
-      title="Login"
-      passedFunction='HomePage'
-      values={{emailValue,pswdValue}}
-      functionality="login"
-      statusCode='200'
+      <ButtonComponent
+        title="Login"
+        passedFunction="HomePage"
+        values={{emailValue, pswdValue}}
+        functionality="login"
+        statusCode="200"
       />
 
       <TouchableOpacity onPress={onPress}>
-      <Text style={styles.text}>Forgot Password?</Text>
+        <Text style={styles.text}>Forgot Password?</Text>
       </TouchableOpacity>
-     
+
       <Text style={styles.bottomText}>
         Don't have an account?
-        
         <TouchableOpacity onPress={onPress1}>
-        <Text style={styles.signUpText}> Sign Up!</Text>
+          <Text style={styles.signUpText}> Sign Up!</Text>
         </TouchableOpacity>
-       
       </Text>
     </View>
   );
@@ -76,7 +80,7 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'center',
   },
- 
+
   expLogo: {
     width: 200,
     height: 54,

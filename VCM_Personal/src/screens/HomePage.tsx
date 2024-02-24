@@ -1,10 +1,15 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useSelector } from 'react-redux';
 
 const HomePage = () => {
+  const isLoggedIn = useSelector((state:any) => state.userReducer.isLoggedIn);
+  const userToken = useSelector((state:any) => state.tokenReducer.token);
+  console.log('usertoken is:',userToken);
   return (
     <View style={styles.mainStyle}>
+                  
       <Text style={styles.titleText}>Contacts</Text>
       <View >
         <TextInput style={styles.textInput} placeholder="Search contacts" />
@@ -15,6 +20,8 @@ const HomePage = () => {
           style={styles.searchIcon}
         />
       </View>
+       <Text>User State: {isLoggedIn ? 'Logged In' : 'Logged Out'}</Text>
+      <Text>User Token: {userToken}</Text>
     </View>
   );
 };
