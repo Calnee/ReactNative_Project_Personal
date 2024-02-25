@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
 import ChangePswdButton from '../../components/ChangePswdButton';
+import CommonButton from '../../components/CommonButton';
 
 const ChangePswdPage = () => {
   return (
@@ -21,7 +22,11 @@ const ChangePswdPage = () => {
         />
       </View>
 
-      <ChangePswdButton />
+      <CommonButton 
+        title="Change Password" passedFunction={''} values={{
+          emailValue: '',
+          pswdValue: ''
+        }} functionality={''} statusCode={''}/>
     </View>
   );
 };

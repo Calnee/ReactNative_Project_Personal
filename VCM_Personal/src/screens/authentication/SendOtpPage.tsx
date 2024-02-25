@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
-import SendOtpButton from '../../components/SendOtpButton';
+import CommonButton from '../../components/CommonButton';
+import CommonTextInput from '../../components/CommonFieldInput';
 
 const SendOtpPage = () => {
   return (
@@ -11,14 +12,23 @@ const SendOtpPage = () => {
       />
 
       <View>
-        <TextInput
+        <CommonTextInput
           style={[styles.formField, styles.formGap1]}
-          placeholder="email"
-        />
-        
+          placeholder="email" onChangeText={function (text: string): void {
+            throw new Error('Function not implemented.');
+          } } value={''}        />
       </View>
 
-      <SendOtpButton />
+      <CommonButton
+        title="Send OTP"
+        passedFunction={''}
+        values={{
+          emailValue: '',
+          pswdValue: '',
+        }}
+        functionality={'sendOTP'}
+        statusCode={''}
+      />
     </View>
   );
 };
@@ -31,7 +41,7 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'center',
   },
- 
+
   expLogo: {
     width: 200,
     height: 54,
@@ -63,6 +73,5 @@ const styles = StyleSheet.create({
     marginLeft: 125,
     marginTop: 10,
   },
-
 });
 export default SendOtpPage;

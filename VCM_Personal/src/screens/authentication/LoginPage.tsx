@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import ButtonComponent from '../../components/Button';
 import {useNavigation} from '@react-navigation/native';
+import CommonButton from '../../components/CommonButton';
 
 const LoginPage = () => {
   const [count, setCount] = useState<number>(0);
@@ -50,7 +50,7 @@ const LoginPage = () => {
         />
       </View>
 
-      <ButtonComponent
+      <CommonButton
         title="Login"
         passedFunction="HomePage"
         values={{emailValue, pswdValue}}

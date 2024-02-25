@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
-import VerifyOtpButton from '../../components/VerifyOtpButton';
+import CommonButton from '../../components/CommonButton';
 
 const VerifyOtpPage = () => {
   return (
@@ -37,7 +37,11 @@ const VerifyOtpPage = () => {
         />
       </View>
 
-      <VerifyOtpButton />
+      <CommonButton
+        title="Verify" passedFunction={''} values={{
+          emailValue: '',
+          pswdValue: ''
+        }} functionality={'verifyOTP'} statusCode={''} />
     </View>
   );
 };

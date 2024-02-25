@@ -1,15 +1,15 @@
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import LogOutButton from '../components/LogOutButton';
 import { useSelector } from 'react-redux';
+import CommonButton from '../components/CommonButton';
 
 const ProfilePage = () => {
 
     return(
         <View>
-           <LogOutButton title={'Logout'} passedFunction={'LoginPage'} values={{
+           <CommonButton title={'Logout'} passedFunction={'LoginPage'} values={{
                 emailValue: '', pswdValue: ''
-            }} functionality={'Logout'} />
+            }} functionality={'Logout'} statusCode={''} />
         </View>
     );
 }
