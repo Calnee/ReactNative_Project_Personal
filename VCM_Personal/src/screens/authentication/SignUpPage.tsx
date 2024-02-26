@@ -50,7 +50,7 @@ const SignUpPage = () => {
       </View>
 
       <CommonButton
-        title="Sign Up"
+        title="SIGN UP"
         passedFunction={''}
         values={{
           emailValue: '',
@@ -58,6 +58,8 @@ const SignUpPage = () => {
         }}
         functionality={'signUp'}
         statusCode={''}
+        backgroundColor='#A1D5E3'
+        textColor='black'
       />
 
       <Text style={styles.bottomText}>
@@ -77,6 +79,7 @@ const styles = StyleSheet.create({
     gap: 20,
     padding: 20,
     justifyContent: 'center',
+    backgroundColor:'white'
   },
   expLogo: {
     width: 200,

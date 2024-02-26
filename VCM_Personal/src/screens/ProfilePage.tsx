@@ -38,11 +38,12 @@ const ProfilePage = () => {
   return (
     <View style={styles.commonFeature}>
       <View style={styles.circle}>
-        <Text style={styles.circleText}>{firstLetter}</Text>
+        <Text style={styles.circleText}>D</Text>
       </View>
-      <Text style={styles.titleText}>Hi {fullName}!</Text>
+      <Text style={styles.titleText}>Hi Devapriya !</Text>
       <Text>{email}</Text>
       <Text style={styles.detailText}>Total Contacts: {totalContacts}</Text>
+      <Text style={styles.detailText}>Contact Groups: {totalContacts}</Text>
       <CommonButton
         title={'View Shared Contacts'}
         passedFunction={'LoginPage'}
@@ -52,6 +53,8 @@ const ProfilePage = () => {
         }}
         functionality={'Logout'}
         statusCode={''}
+        backgroundColor='white'
+        textColor='black'
       />
 
       <CommonButton
@@ -64,6 +67,8 @@ const ProfilePage = () => {
         }}
         functionality={'Logout'}
         statusCode={''}
+        backgroundColor='#A1D5E3'
+        textColor='black'
       />
 
       <CommonButton
@@ -76,6 +81,8 @@ const ProfilePage = () => {
         }}
         functionality={'Logout'}
         statusCode={''}
+        backgroundColor='white'
+        textColor='#b22222'
       />
     </View>
   );
@@ -86,8 +93,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     gap: 20,
-    padding: 30,
+    padding: 20,
     justifyContent: 'center',
+    backgroundColor:'white'
   },
   titleText: {
     fontSize: 40,
@@ -107,8 +115,8 @@ const styles = StyleSheet.create({
     marginBottom: 10, // Adjust as needed
   },
   circleText: {
-    fontSize: 20,
-    color: 'white', // You can change the color
+    fontSize: 40,
+    color: 'black', // You can change the color
   },
 });
 export default ProfilePage;

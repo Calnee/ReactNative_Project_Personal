@@ -15,9 +15,13 @@ type ButtonTypes = {
   values: {emailValue: string; pswdValue: string;};
   functionality: string;
   statusCode: string;
+  backgroundColor?: string; // new prop for background color
+  textColor?: string; 
 };
 
 const MyButton = (props: ButtonTypes) => {
+  const { backgroundColor = '#1e90ff', textColor = 'white' } = props;
+
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const ButtonAction = async () => {
@@ -71,30 +75,31 @@ const MyButton = (props: ButtonTypes) => {
     }
   };
   return (
-    <View style={styles.button}>
-      <TouchableOpacity
-        onPress={() => {
-          ButtonAction();
-        }}>
-        <Text style={styles.textColor}>{props.title}</Text>
-        {/* <ActivityIndicator size="small" color="white" /> */}
-      </TouchableOpacity>
-    </View>
+    <View style={[styles.button, { backgroundColor }]}>
+    <TouchableOpacity onPress={ButtonAction}>
+      <Text style={[styles.text, { color: textColor }]}>{props.title}</Text>
+    </TouchableOpacity>
+  </View>
   );
 };
 
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    backgroundColor: '#1e90ff',
+    backgroundColor: '#A1D5E3',
     padding: 10,
     borderRadius: 10,
-    height: 45,
+    height: 60,
     marginLeft: 4,
-    marginTop: 10,
+    marginTop: 6,
+    borderWidth:0.5,
+    borderColor:'black'
   },
-  textColor: {
+  text: {
     color: 'white',
+    alignItems:'center',
+    justifyContent:'center',
+    fontSize:20
   },
 });
 export default MyButton;

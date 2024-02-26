@@ -25,7 +25,7 @@ const BottomTabNavigator = () => (
       }}
     />
 
-    {/* <BottomNav.Screen
+    <BottomNav.Screen
       name="Groups"
       component={GroupPage}
       options={{
@@ -37,7 +37,7 @@ const BottomTabNavigator = () => (
         tabBarActiveTintColor: 'red',
         tabBarInactiveTintColor: 'gray',
       }}
-    /> */}
+    />
 
     <BottomNav.Screen
       name="ProfilePage"

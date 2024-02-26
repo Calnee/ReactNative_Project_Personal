@@ -6,8 +6,8 @@ import ContactListComponent from '../components/ContactList';
 import {User} from '../network/ContactListHook';
 
 const HomePage = () => {
-  const isLoggedIn = useSelector((state: any) => state.userReducer.isLoggedIn);
-  const userToken = useSelector((state: any) => state.tokenReducer.token);
+  // const isLoggedIn = useSelector((state: any) => state.userReducer.isLoggedIn);
+  // const userToken = useSelector((state: any) => state.tokenReducer.token);
   const contacts = useSelector((state: any) => state.tokenReducer.contact_name);
 
   // const [contact, setContactList] = useState('');
@@ -41,15 +41,27 @@ const HomePage = () => {
         />
       </View>
 
-      <Text>User State: {isLoggedIn ? 'Logged In' : 'Logged Out'}</Text>
-      <Text>User Token: {userToken}</Text>
+      <MaterialCommunityIcons
+          name="camera"
+          size={45}
+          color="#666"
+          style={styles.cameraIcon}
+        />
+      <View style={styles.cameraBox}>
+      </View>
+     
+
+      {/* <Text>User State: {isLoggedIn ? 'Logged In' : 'Logged Out'}</Text>
+      <Text>User Token: {userToken}</Text> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   mainStyle: {
-    padding: 30,
+    padding: 20,
+    backgroundColor:'white',
+    height:900
   },
   titleText: {
     fontSize: 40,
@@ -72,6 +84,23 @@ const styles = StyleSheet.create({
     left: 314,
     bottom: 14,
   },
+  cameraBox: {
+    position:'absolute',
+    backgroundColor: '#A1D5E3',
+    padding: 10,
+    width: 90,
+    height:90,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    left:270,
+    bottom: -160,
+  },
+  cameraIcon: {
+    left:290,
+    bottom: -190,
+    borderRadius:20
+  }
 });
 
 export default HomePage;

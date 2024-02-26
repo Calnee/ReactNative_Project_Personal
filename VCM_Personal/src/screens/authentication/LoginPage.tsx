@@ -54,11 +54,13 @@ const LoginPage = () => {
       </View>
 
       <CommonButton
-        title="Login"
+        title="LOGIN"
         passedFunction="HomePage"
         values={{emailValue, pswdValue}}
         functionality="login"
         statusCode="200"
+        backgroundColor='#A1D5E3'
+        textColor='black'
       />
 
       <TouchableOpacity onPress={onPress}>
@@ -79,9 +81,10 @@ const styles = StyleSheet.create({
   commonFeature: {
     flex: 1,
     flexDirection: 'column',
-    gap: 20,
-    padding: 20,
+    gap: 6,
+    padding: 10,
     justifyContent: 'center',
+    backgroundColor:'white'
   },
 
   expLogo: {
@@ -99,11 +102,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderColor: '#add8e6',
     justifyContent: 'center',
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.15,
-    shadowRadius: 3,
-    elevation: 3, // for Android
+    // shadowColor: '#000',
+    // shadowOffset: {width: 0, height: 2},
+    // shadowOpacity: 0.15,
+    // shadowRadius: 3,
+    // elevation: 3, // for Android
   },
   formGap1: {
     marginTop: 35,
@@ -120,7 +123,7 @@ const styles = StyleSheet.create({
     paddingTop: 100,
   },
   signUpText: {
-    color: '#1e90ff',
+    color: '#b22222',
   },
 });
 export default LoginPage;

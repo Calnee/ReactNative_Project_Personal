@@ -1,60 +1,95 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 
-type ContactList = {
-  onChangeText: (text: string) => void;
-  value: string;
-  style?: object;
-};
+const feeds = [
+  {
+    id: 1,
+    firstLetter: 'R',
+    contact_name: 'Rose Mathew',
+    iconColor: '#AEFAAD',
+  },
+  {
+    id: 2,
+    firstLetter: 'D',
+    contact_name: 'Devapriya L',
+    iconColor: '#FDF9A5',
+  },
+  {
+    id: 3,
+    firstLetter: 'V',
+    contact_name: 'Vipin K P',
+    iconColor: '#98D5F0',
+  },
+  {
+    id: 4,
+    firstLetter: 'P',
+    contact_name: 'Pranav P Prasanth',
+    iconColor: '#FFB775',
+  },
+];
 
-const ContactListComponent = (props: ContactList) => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.circle}>
-        {/* <Text style={styles.circleText}>{props.value.charAt(0).toUpperCase()}</Text> */}
+type ItemProps = { contact_name: string; firstLetter: string; iconColor: string };
+
+const Item = ({ contact_name, firstLetter, iconColor }: ItemProps) => (
+  <View style={styles.storyContainer}>
+    <View style={styles.firstRow}>
+    <View style={[styles.circleStyle, { backgroundColor: iconColor }]}>
+        <Text style={styles.circleText}>{firstLetter}</Text>
       </View>
-      <Text style={[styles.formField, props.style]}>{props.value}</Text>
+      <Text style={styles.firstRowText}>{contact_name}</Text>
+    </View>
+  </View>
+);
+
+const ContactList = () => {
+  return (
+    <View style={styles.mainStyle}>
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        data={feeds}
+        renderItem={({ item }) => (
+          <Item
+            contact_name={item.contact_name}
+            firstLetter={item.firstLetter}
+            iconColor={item.iconColor}
+          />
+        )}
+        keyExtractor={(item) => item.id.toString()}
+        horizontal={false}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  formField: {
-    flex: 1,
-   // borderWidth: 0.7,
+  storyContainer: {
     padding: 10,
-    marginBottom: 14,
-    marginTop: 14,
-   // borderRadius: 8,
-    backgroundColor: 'white',
-    color:'black',
-   // borderColor: '#add8e6',
-    justifyContent: 'center',
-    // shadowColor: '#000',
-    // shadowOffset: { width: 0, height: 2 },
-    // shadowOpacity: 0.15,
-    // shadowRadius: 3,
-    elevation: 3,
   },
-  circle: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#add8e6',
+  mainStyle: {
+    padding: 6,
+  },
+  firstRow: {
+    flexDirection: 'row',
+    height: 60,
+  },
+  firstRowText: {
+    marginTop: 20,
+    marginLeft: 20,
+    color:'black',
+    fontSize:20
+  },
+  circleStyle: {
+    borderRadius: 30,
+    height: 60,
+    width: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 10,
+    color: 'black',
   },
   circleText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 18,
-    textTransform: 'uppercase', // Ensure text is always in uppercase
+    color: 'black',
+    fontSize: 20, // Adjust the font size as needed
   },
 });
 
-export default ContactListComponent;
+export default ContactList;
