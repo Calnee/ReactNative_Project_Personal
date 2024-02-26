@@ -34,6 +34,7 @@ export async function loginUser({
     console.log(statusCode);
 
     let loginResp = logInResponse.data;
+    user_id = loginResp.user_id;
     message = loginResp.message;
     token = loginResp.token;
     console.log(loginResp);

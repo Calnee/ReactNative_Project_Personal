@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity, Text, StyleSheet, View} from 'react-native';
 import {useDispatch} from 'react-redux';
@@ -6,11 +6,13 @@ import {loginUser} from '../network/LoginHook';
 import Constants from '../utils/Constants';
 import {setStringItem} from '../utils/Utils';
 import {userLogin} from '../context/userSlice';
+import {setContactName, setToken} from '../context/tokenSlice';
+import {User} from '../network/ContactListHook';
 
 type ButtonTypes = {
   title: string;
   passedFunction: string;
-  values: {emailValue: string; pswdValue: string};
+  values: {emailValue: string; pswdValue: string;};
   functionality: string;
   statusCode: string;
 };
@@ -24,15 +26,30 @@ const MyButton = (props: ButtonTypes) => {
     }
 
     if (props.functionality === 'login') {
-      let {token, message, statusCode} = await loginUser({
+      let {token, message, statusCode, user_id} = await loginUser({
         loginUserEmail: props.values.emailValue,
         loginPassword: props.values.pswdValue,
       });
 
-     // console.log('status is ' + message);
       if (statusCode === '200') {
         setStringItem(Constants.IS_LOGIN, 'true');
         dispatch(userLogin(true));
+        console.log('Id from page........',user_id);
+        console.log('jwtToken:',token);
+        // let {contact_name} = await User({
+        //   UserId: props.values.user_id,
+        //   jwtToken: token,
+        // });
+        try {
+          const { contact_name } = await User({
+            UserId: user_id, // Use user_id obtained from the login response
+            jwtToken: token,
+          });
+      
+          dispatch(setContactName(contact_name));
+        } catch (error) {
+          console.error('Error while fetching user information:', error);
+        }
       }
     }
 

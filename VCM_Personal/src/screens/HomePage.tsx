@@ -1,17 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
+import ContactListComponent from '../components/ContactList';
+import {User} from '../network/ContactListHook';
 
 const HomePage = () => {
-  const isLoggedIn = useSelector((state:any) => state.userReducer.isLoggedIn);
-  const userToken = useSelector((state:any) => state.tokenReducer.token);
-  console.log('usertoken is:',userToken);
+  const isLoggedIn = useSelector((state: any) => state.userReducer.isLoggedIn);
+  const userToken = useSelector((state: any) => state.tokenReducer.token);
+  const contacts = useSelector((state: any) => state.tokenReducer.contact_name);
+
+  // const [contact, setContactList] = useState('');
+  // useEffect(() => {
+  //   const setContactList = async () => {
+     
+
+  //     setContactList();
+  //   };
+  // }, []);
+
   return (
     <View style={styles.mainStyle}>
-                  
       <Text style={styles.titleText}>Contacts</Text>
-      <View >
+      <View>
         <TextInput style={styles.textInput} placeholder="Search contacts" />
         <MaterialCommunityIcons
           name="account-search"
@@ -20,7 +31,17 @@ const HomePage = () => {
           style={styles.searchIcon}
         />
       </View>
-       <Text>User State: {isLoggedIn ? 'Logged In' : 'Logged Out'}</Text>
+
+      <View>
+        <ContactListComponent
+          onChangeText={function (text: string): void {
+            throw new Error('Function not implemented.');
+          }}
+          value={contacts}
+        />
+      </View>
+
+      <Text>User State: {isLoggedIn ? 'Logged In' : 'Logged Out'}</Text>
       <Text>User Token: {userToken}</Text>
     </View>
   );
@@ -39,7 +60,7 @@ const styles = StyleSheet.create({
   },
   inputField: {
     flexDirection: 'row',
-    position:'relative'
+    position: 'relative',
   },
   textInput: {
     backgroundColor: '#dcdcdc',
@@ -49,7 +70,7 @@ const styles = StyleSheet.create({
   searchIcon: {
     position: 'absolute',
     left: 314,
-    bottom:14
+    bottom: 14,
   },
 });
 

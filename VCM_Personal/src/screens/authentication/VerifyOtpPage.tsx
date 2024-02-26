@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
 import CommonButton from '../../components/CommonButton';
+import CommonTextInput from '../../components/CommonFieldInput';
 
 const VerifyOtpPage = () => {
   return (
@@ -11,30 +12,42 @@ const VerifyOtpPage = () => {
       />
 
       <View style={styles.formFieldRow}>
-        <TextInput
+        <CommonTextInput
           style={[styles.formField, styles.formGap1]}
-          placeholder=""
-        />
-          <TextInput
+          placeholder="" onChangeText={function (text: string): void {
+            throw new Error('Function not implemented.');
+          } } value={''}        />
+          
+          <CommonTextInput
           style={[styles.formField, styles.formGap1]}
-          placeholder=""
-        />
-          <TextInput
+          placeholder="" onChangeText={function (text: string): void {
+            throw new Error('Function not implemented.');
+          } } value={''}        />
+
+          <CommonTextInput
           style={[styles.formField, styles.formGap1]}
-          placeholder=""
-        />
-          <TextInput
+          placeholder="" onChangeText={function (text: string): void {
+            throw new Error('Function not implemented.');
+          } } value={''}        />
+
+          <CommonTextInput
           style={[styles.formField, styles.formGap1]}
-          placeholder=""
-        />
-          <TextInput
+          placeholder="" onChangeText={function (text: string): void {
+            throw new Error('Function not implemented.');
+          } } value={''}        />
+
+          <CommonTextInput
           style={[styles.formField, styles.formGap1]}
-          placeholder=""
-        />
-          <TextInput
+          placeholder="" onChangeText={function (text: string): void {
+            throw new Error('Function not implemented.');
+          } } value={''}        />
+
+          <CommonTextInput
           style={[styles.formField, styles.formGap1]}
-          placeholder=""
-        />
+          placeholder="" onChangeText={function (text: string): void {
+            throw new Error('Function not implemented.');
+          } } value={''}        />
+
       </View>
 
       <CommonButton

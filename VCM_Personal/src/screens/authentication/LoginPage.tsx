@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Image,
   StyleSheet,
@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import CommonButton from '../../components/CommonButton';
+import CommonTextInput from '../../components/CommonFieldInput';
+import { User } from '../../network/ContactListHook';
 
 const LoginPage = () => {
   const [count, setCount] = useState<number>(0);
@@ -24,6 +26,7 @@ const LoginPage = () => {
     navigation.navigate('SignUpPage' as never);
   };
 
+
   const [emailValue, setUserEmail] = useState('');
   const [pswdValue, setUserPassword] = useState('');
 
@@ -35,13 +38,13 @@ const LoginPage = () => {
       />
 
       <View>
-        <TextInput
+        <CommonTextInput
           style={[styles.formField, styles.formGap1]}
           placeholder="email"
           value={emailValue}
           onChangeText={emailValue => setUserEmail(emailValue)}
         />
-        <TextInput
+        <CommonTextInput
           style={[styles.formField, styles.formGap2]}
           secureTextEntry={true}
           placeholder="password"
